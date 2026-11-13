@@ -1,6 +1,6 @@
 # Threat Hunts
 
-**Four investigations into realistic attacks, each traced from the first sign to the last move and written up as an incident report.**
+**Five investigations into realistic attacks, each traced from the first sign to the last move and written up as an incident report.**
 
 Threat hunting means searching security logs for an attack that may already be under way, then piecing together what happened and what to do next. Each hunt below was investigated in Microsoft's security tools (Defender and Sentinel) with KQL, Microsoft's log search language. Three were live community hunts on [The Cyber Range](https://www.skool.com/cyber-range), scored on how many investigation questions ("flags") were answered correctly and on time.
 
@@ -12,6 +12,7 @@ Threat hunting means searching security logs for an attack that may already be u
 | **[Echo Leaks](https://github.com/kenmwara/threat-hunt-echo-leaks)** | Microsoft 365 Copilot tricked by a Word file | 17 / 17 questions · a perfect 1,600 |
 | **[Meridian](https://github.com/kenmwara/threat-hunt-meridian)** | A hacked Linux web server | 16 / 16 questions · full marks |
 | **[Unauthorized Tor](https://github.com/kenmwara/threat-hunt-tor)** | Hidden browsing on a test computer | Session and relays traced |
+| **[Operation Quartzfang](https://github.com/kenmwara/threat-hunt-quartzfang)** | AI-directed intrusion at a semiconductor firm | 28 / 28 flags · perfect score |
 
 ## [Harborlight: ransomware at a dental practice](https://github.com/kenmwara/threat-hunt-harborlight)
 
@@ -45,10 +46,20 @@ A hidden browser was used for about 1 hour 40 minutes on a test computer. The se
 
 [Read the full report →](https://github.com/kenmwara/threat-hunt-tor)
 
+## [Operation Quartzfang: AI-directed intrusion at a semiconductor firm](https://github.com/kenmwara/threat-hunt-quartzfang)
+
+An AI agent, steered by a human operator at five decision points, turned a single website flaw (an SSRF on a document-preview API) into full control of a semiconductor design firm and staged exfiltration. All 28 investigation flags found, a perfect score. Reproduces a known AI-directed-espionage campaign.
+
+<a href="https://github.com/kenmwara/threat-hunt-quartzfang"><img src="https://raw.githubusercontent.com/kenmwara/threat-hunt-quartzfang/main/evidence/flow.png" width="100%" alt="Operation Quartzfang attack flow: an SSRF on the document-preview API reaches an internal cache, becomes a scheduled reverse shell to root, then the attacker reads database and registry credentials and stages an archive to a second server — with an AI agent driven by a human operator at five decision points."></a>
+
+[Read the full report →](https://github.com/kenmwara/threat-hunt-quartzfang)
+
 ## How each report is written
 
 Every report follows the same incident-report shape: a bottom line first, the key numbers, what happened in order, the evidence behind each finding, the alert rules that would catch it next time (each re-run against the data), and what to do now.
 
-A fifth live hunt closes on 30 October 2026; its report will be added here after it closes.
+## Hunts I build
+
+As well as solving hunts, I design them. I'm currently authoring a hard AI-helpdesk-agent prompt-injection hunt for The Cyber Range — a company's own AI assistant manipulated into resetting an account it shouldn't, turning a narrow permission into admin access. It's private until it ships; the public write-up will be added here after it runs.
 
 *Simulated environments only. All data comes from training ranges and lab machines; no real organisation was involved.*
