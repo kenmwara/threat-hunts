@@ -1,8 +1,8 @@
 # Threat Hunts
 
-**Five investigations into realistic attacks, each traced from the first sign to the last move and written up as an incident report.**
+**Six investigations into realistic attacks, each traced from the first sign to the last move and written up as an incident report.**
 
-Threat hunting means searching security logs for an attack that may already be under way, then piecing together what happened and what to do next. Each hunt below was investigated in Microsoft's security tools (Defender and Sentinel) with KQL, Microsoft's log search language. Three were live community hunts on [The Cyber Range](https://www.skool.com/cyber-range), scored on how many investigation questions ("flags") were answered correctly and on time.
+Threat hunting means searching security logs for an attack that may already be under way, then piecing together what happened and what to do next. Each hunt below was investigated in Microsoft's security tools (Defender and Sentinel) with KQL, Microsoft's log search language. Five were live community hunts on [The Cyber Range](https://www.skool.com/cyber-range), scored on how many investigation questions ("flags") were answered correctly and on time.
 
 <img src="images/overview.png" width="100%" alt="Key takeaways. Four attacks traced from the first sign to the last move. 46 / 46: Ransomware at a dental practice. Harborlight: one bad download, every computer locked in just over three hours. Every question answered. 17 / 17: An AI assistant tricked. Echo Leaks: hidden instructions made Copilot read 13 private files. A perfect score. 16 / 16: A hacked web server. Meridian: a website flaw led to full control, and a backdoor left running. Full marks. ≈1 h 40 m: Hidden browsing traced. Unauthorized Tor use on a test computer, rebuilt from Defender's logs.">
 
@@ -13,6 +13,7 @@ Threat hunting means searching security logs for an attack that may already be u
 | **[Meridian](https://github.com/kenmwara/threat-hunt-meridian)** | A hacked Linux web server | 16 / 16 questions · full marks |
 | **[Unauthorized Tor](https://github.com/kenmwara/threat-hunt-tor)** | Hidden browsing on a test computer | Session and relays traced |
 | **[Operation Quartzfang](https://github.com/kenmwara/threat-hunt-quartzfang)** | AI-directed intrusion at a semiconductor firm | 28 / 28 flags · perfect score |
+| **[PHP2Shell: the Hartwell Breach](https://github.com/kenmwara/threat-hunt-php2shell)** | A WordPress web server taken over through a file upload | 18 / 18 flags · a perfect 1,750 |
 
 ## [Harborlight: ransomware at a dental practice](https://github.com/kenmwara/threat-hunt-harborlight)
 
@@ -53,6 +54,12 @@ An AI agent, steered by a human operator at five decision points, turned a singl
 <a href="https://github.com/kenmwara/threat-hunt-quartzfang"><img src="https://raw.githubusercontent.com/kenmwara/threat-hunt-quartzfang/main/evidence/flow.png" width="100%" alt="Operation Quartzfang attack flow: an SSRF on the document-preview API reaches an internal cache, becomes a scheduled reverse shell to root, then the attacker reads database and registry credentials and stages an archive to a second server — with an AI agent driven by a human operator at five decision points."></a>
 
 [Read the full report →](https://github.com/kenmwara/threat-hunt-quartzfang)
+
+## [PHP2Shell: a web server taken over through a file upload](https://github.com/kenmwara/threat-hunt-php2shell)
+
+An outside computer broke into a medical group's patient-scheduling website through a flaw in the software that runs it. It read the website's database password and the staff login table, which were likely sent out in web replies, and left three ways back in; one was still running when the records end. The same computer had been visiting since 10 October, 13 days before the first alerts. All 18 investigation flags found, a perfect 1,750 of 1,750, on time.
+
+[Read the full report →](https://github.com/kenmwara/threat-hunt-php2shell)
 
 ## How each report is written
 
